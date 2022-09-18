@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
+import Card from "../components/Card.astro";
+
 import logos from "../images/deploy-logos.png";
 import logosSmall from "../images/deploy-logos-small.png";
 ---
@@ -25,7 +27,7 @@ import logosSmall from "../images/deploy-logos-small.png";
         impedit.
       </p>
 
-      <div class="card">
+      <Card dark="true">
         <h3>Use the tools you already love</h3>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta ipsum
@@ -35,7 +37,7 @@ import logosSmall from "../images/deploy-logos-small.png";
           laborum impedit nesciunt ut voluptatum assumenda aspernatur libero
           iusto error molestias dolorum, necessitatibus labore?
         </p>
-      </div>
+      </Card>
 
       <h3>Deploy to anywhere, even the edge</h3>
       <img class="logos" src={logos} alt="" />

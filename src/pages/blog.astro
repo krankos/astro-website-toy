@@ -40,7 +40,7 @@ const posts = await Astro.glob("../posts/*.md");
 <Layout title="Astro Blog">
   <Showcase heading="Astro Blog" text="A simple Blog built with Astro" />
   <section class="page-content">
-    <div class="container" client:idle>
+    <div class="container">
       {
         strapiPosts.map((post) => (
           <Card>

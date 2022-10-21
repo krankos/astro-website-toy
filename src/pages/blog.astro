@@ -42,6 +42,14 @@ const posts = await Astro.glob("../posts/*.md");
   <section class="page-content">
     <div class="container">
       {
+        strapiPosts.map((post) => (
+          <Card>
+            <h3>{post.attributes.title}</h3>
+            <p set:html={marked.parse(post.attributes.description)} />
+          </Card>
+        ))
+      }
+      {
         posts.map((post) => (
           <Card>
             <h3>{post.frontmatter.title}</h3>
@@ -53,14 +61,6 @@ const posts = await Astro.glob("../posts/*.md");
             <a class="btn" href={`/${post.frontmatter.slug}`}>
               Read more
             </a>
-          </Card>
-        ))
-      }
-      {
-        strapiPosts.map((post) => (
-          <Card>
-            <h3>{post.attributes.title}</h3>
-            <p set:html={marked.parse(post.attributes.description)} />
           </Card>
         ))
       }

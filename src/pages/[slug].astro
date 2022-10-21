@@ -3,6 +3,9 @@ import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 
 export async function getStaticPaths() {
+  // const strapiPosts = await fetch("http://0.0.0.0:1337/posts").then((res) =>
+  //   res.json()
+  // );
   const posts = await Astro.glob("../posts/*.md");
   return posts.map((post) => ({
     params: {

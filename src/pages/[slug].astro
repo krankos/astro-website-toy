@@ -14,6 +14,7 @@ export async function getStaticPaths() {
   const data = await response.json();
   // console.log(data);
   const strapiPosts = data.data;
+
   // const posts = await Astro.glob("../posts/*.md");
   // return posts.map((post) => ({
   //   params: {
@@ -23,9 +24,10 @@ export async function getStaticPaths() {
   //     post,
   //   },
   // }));
+
   return strapiPosts.map((post) => ({
     params: {
-      slug: post.attributes.slug,
+      slug: post.attributes.Slug,
     },
     props: {
       post,
@@ -37,16 +39,16 @@ export async function getStaticPaths() {
 const p = Astro.props.post.attributes;
 ---
 
-<Layout title={p.title}>
+<Layout title={p.Title}>
   <section class="page-content">
     <div class="container">
       <Card>
         <a href="/blog" class="btn">Go back</a>
         <h2>
-          {p.title}
+          {p.Title}
         </h2>
 
-        <p set:html={marked.parse(p.description)}></p>
+        <p set:html={marked.parse(p.Description)}></p>
       </Card>
     </div>
   </section>

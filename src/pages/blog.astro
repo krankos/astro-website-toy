@@ -19,7 +19,7 @@ const response = await fetch(
   }
 );
 const data = await response.json();
-console.log(data);
+console.log(data.data);
 const strapiPosts = data.data;
 
 // let converter = new showdown.Converter();
@@ -43,8 +43,11 @@ const posts = await Astro.glob("../posts/*.md");
       {
         strapiPosts.map((post) => (
           <Card>
-            <h3>{post.attributes.title}</h3>
-            <p>{post.attributes.excerpt}</p>
+            <h3>{post.attributes.Title}</h3>
+            <p>{post.attributes.Excerpt}</p>
+            <a class="btn" href={`/${post.attributes.Slug}`}>
+              Read More
+            </a>
           </Card>
         ))
       }

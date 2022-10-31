@@ -5,8 +5,6 @@ import Card from "../components/Card.astro";
 
 import Showcase from "../components/Showcase.astro";
 
-import showdown from "showdown";
-
 import { marked } from "marked";
 
 // const response = fetch(url, options)
@@ -46,7 +44,7 @@ const posts = await Astro.glob("../posts/*.md");
         strapiPosts.map((post) => (
           <Card>
             <h3>{post.attributes.title}</h3>
-            <p set:html={marked.parse(post.attributes.description)} />
+            <p>{post.attributes.excerpt}</p>
           </Card>
         ))
       }

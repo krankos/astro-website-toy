@@ -2,14 +2,30 @@
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 
+import { marked } from "marked";
+
 export async function getStaticPaths() {
-  // const strapiPosts = await fetch("http://0.0.0.0:1337/posts").then((res) =>
-  //   res.json()
-  // );
-  const posts = await Astro.glob("../posts/*.md");
-  return posts.map((post) => ({
+  const response = await fetch(
+    "https://evening-ravine-15718.herokuapp.com/api/internships",
+    {
+      method: "GET",
+    }
+  );
+  const data = await response.json();
+  // console.log(data);
+  const strapiPosts = data.data;
+  // const posts = await Astro.glob("../posts/*.md");
+  // return posts.map((post) => ({
+  //   params: {
+  //     slug: post.frontmatter.slug,
+  //   },
+  //   props: {
+  //     post,
+  //   },
+  // }));
+  return strapiPosts.map((post) => ({
     params: {
-      slug: post.frontmatter.slug,
+      slug: post.attributes.slug,
     },
     props: {
       post,
@@ -17,19 +33,20 @@ export async function getStaticPaths() {
   }));
 }
 
-const { Content, frontmatter } = Astro.props.post;
+// const { Content, frontmatter } = Astro.props.post;
+const p = Astro.props.post.attributes;
 ---
 
-<Layout title={frontmatter.title}>
+<Layout title={p.title}>
   <section class="page-content">
     <div class="container">
       <Card>
         <a href="/blog" class="btn">Go back</a>
         <h2>
-          {frontmatter.title}
+          {p.title}
         </h2>
 
-        <Content />
+        <p set:html={marked.parse(p.description)}></p>
       </Card>
     </div>
   </section>

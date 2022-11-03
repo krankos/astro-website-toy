@@ -1,13 +1,16 @@
 ---
 import logo from "../images/logo.svg";
 import logo2 from "../images/logo2.svg";
+import logo3 from "../images/logo3.svg";
+import logo4 from "../images/logo4.svg";
+import logo5 from "../images/logo5.svg";
 ---
 
 <header class="header">
   <div class="container">
     <div class="logo">
       <a href="/">
-        <img src={logo2} alt="" />
+        <img src={logo5} alt="" />
       </a>
     </div>
     <nav>
@@ -15,10 +18,7 @@ import logo2 from "../images/logo2.svg";
         <li><a href="/">Home</a></li>
         <li><a href="/about">About</a></li>
         <li>
-          <a
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            href="/blog">Blog</a
-          >
+          <a class="btnn py-2 px-4 rounded" href="/blog">Get Started!</a>
         </li>
       </ul>
     </nav>
@@ -27,20 +27,27 @@ import logo2 from "../images/logo2.svg";
 
 <style>
   .header {
-    height: 70px;
-    background: var(--color-primary);
+    height: 80px;
+    /* background: var(--color-primary); */
+  }
+  .btnn {
+    background: #80ed99;
+    color: #0f0a3c !important;
+    font-weight: 900 !important;
   }
 
   .header .container {
+    max-width: 1800px;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
+    border: red solid 1px;
   }
 
   .header img {
-    height: 35px;
+    height: 30px;
     vertical-align: middle;
   }
 

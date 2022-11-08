@@ -9,8 +9,8 @@ export interface Props {
 }
 
 const {
-  heading = "Welcome To The Astro Crash Course!",
-  text = "Build super fast HTML-first websites using your favorite JavaScript frameworks",
+  heading = "Start your career the right way",
+  text = "Join us and Explore Internship opportunities",
   showExtra = false,
 } = Astro.props as Props;
 ---
@@ -22,7 +22,8 @@ const {
       {text}
     </p>
   </div>
-  {
+  <a class="btnn py-2 px-4 rounded" href="/blog"> Get Started!</a>
+  <!-- {
     showExtra && (
       <>
         {" "}
@@ -37,18 +38,22 @@ const {
         </p>
       </>
     )
-  }
+  } -->
 </section>
 
 <style>
   .showcase {
     height: auto;
-    background-color: var(--color-secondary);
+    /* background-color: var(--color-secondary);
     background-image: linear-gradient(
       to bottom,
       var(--color-primary),
       rgb(15 23 42 / 0)
-    );
+    ); */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 30px;
   }
 
@@ -58,15 +63,17 @@ const {
 
   .showcase-text {
     max-width: 500px;
-    color: #fff;
+    /* color: #fff; */
+    color: var(--color-new-secondary);
     text-align: center;
     margin: 50px auto;
   }
 
   .showcase h1 {
     font-size: 50px;
-    color: #fff;
+    /* color: #fff; */
     margin-bottom: 20px;
+    font-weight: 900;
   }
 
   .showcase p {
@@ -84,7 +91,8 @@ const {
   }
 
   .showcase-demo {
-    color: #fff;
+    /* color: #fff; */
+    color: var(--color-new-secondary);
     text-align: center;
     font-weight: 300;
   }

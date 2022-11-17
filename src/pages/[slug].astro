@@ -79,12 +79,18 @@ console.log(p.Company);
                 <b>Internship Type:</b>
                 {p.Type}
               </p>
-              <p>
-                <b>Contact:</b>
-                <a href={`mailto: ${p.Company.data.attributes.contact}`}
-                  >{p.Company.data.attributes.contact}
-                </a>
-              </p>
+              {
+                p.Company ? (
+                  <p>
+                    <b>Contact:</b>
+                    <a href={`mailto: ${p.Company.data.attributes.contact}`}>
+                      {p.Company.data.attributes.contact}
+                    </a>
+                  </p>
+                ) : (
+                  ""
+                )
+              }
             </div>
           </div>
 

@@ -37,7 +37,7 @@ export async function getStaticPaths() {
 
 // const { Content, frontmatter } = Astro.props.post;
 const p = Astro.props.post.attributes;
-console.log(p.Company);
+// console.log(p.Company);
 ---
 
 <Layout title={p.Title}>
@@ -52,7 +52,7 @@ console.log(p.Company);
                 {p.Title}
               </h2>
               {
-                p.Company ? (
+                p.Company != null ? (
                   <h3>
                     at
                     <b>{p.Company.data.attributes.name}</b>

@@ -6,13 +6,13 @@ import { marked } from "marked";
 
 export async function getStaticPaths() {
   const response = await fetch(
-    "https://evening-ravine-15718.herokuapp.com/api/internships",
+    "https://evening-ravine-15718.herokuapp.com/api/internships?populate=*",
     {
       method: "GET",
     }
   );
   const data = await response.json();
-  // console.log(data);
+  // console.log(data.data[1].Company);
   const strapiPosts = data.data;
 
   // const posts = await Astro.glob("../posts/*.md");
@@ -37,19 +37,91 @@ export async function getStaticPaths() {
 
 // const { Content, frontmatter } = Astro.props.post;
 const p = Astro.props.post.attributes;
+console.log(p.Company);
 ---
 
 <Layout title={p.Title}>
   <section class="page-content">
     <div class="container">
       <Card>
-        <a href="/blog" class="btn">Go back</a>
-        <h2>
-          {p.Title}
-        </h2>
+        <a href="/blog" class="go-back btn">Go back</a>
+        <div>
+          <div class="flex space-between">
+            <div class="">
+              <h2>
+                {p.Title}
+              </h2>
+              {
+                p.Company ? (
+                  <h3>
+                    <b>{p.Company.data.attributes.name}</b>
+                  </h3>
+                ) : (
+                  ""
+                )
+              }
+            </div>
+            <div class="info">
+              <p>
+                <b>Location:</b>
+                {p.Location}
+              </p>
+              <p>
+                <b>Expiration Date:</b>
+                {p.Expiration_Date}
+              </p>
+              <p>
+                <b> Internship Duration:</b>
+                {p.Duration.slice(1)}
+              </p>
+              <p>
+                <b>Internship Type:</b>
+                {p.Type}
+              </p>
+              <p>
+                <b>Contact:</b>
+                <a href={`mailto: ${p.Company.data.attributes.contact}`}
+                  >{p.Company.data.attributes.contact}
+                </a>
+              </p>
+            </div>
+          </div>
 
-        <p set:html={marked.parse(p.Description)}></p>
+          <div class="flex">
+            <div>
+              <p>
+                <b>Job Description:</b>
+              </p>
+              <p set:html={marked.parse(p.Description)}></p>
+            </div>
+          </div>
+        </div>
       </Card>
     </div>
   </section>
 </Layout>
+
+<style>
+  .flex {
+    margin-top: 2px;
+    display: flex;
+
+    border: 1px solid #ccc;
+  }
+  .space-between {
+    justify-content: space-between;
+  }
+  h2 {
+    border: 1px solid #ccc;
+  }
+  .info {
+    /* border: 1px solid #ccc; */
+    padding: 10px;
+    margin-left: 10px;
+    background-color: rgb(246, 245, 245);
+    box-shadow: inset;
+  }
+  .go-back {
+    background-color: #0f0a3c;
+  }
+</style>

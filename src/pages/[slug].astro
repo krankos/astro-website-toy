@@ -83,7 +83,11 @@ const p = Astro.props.post.attributes;
                 p.Company ? (
                   <p>
                     <b>Contact:</b>
-                    <a href={`mailto: ${p.Company.data.attributes.contact}`}>
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={`mailto: ${p.Company.data.attributes.contact}`}
+                    >
                       {p.Company.data.attributes.contact}
                     </a>
                   </p>

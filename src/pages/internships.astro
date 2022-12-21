@@ -62,7 +62,7 @@ const posts = await Astro.glob("../posts/*.md");
                 ) : null}
                 {post.attributes.Duration ? (
                   <p>
-                    <b>Duration:</b> {post.attributes.Duration.slice(1, -1)}
+                    <b>Duration:</b> {post.attributes.Duration.slice(1)}
                   </p>
                 ) : null}
               </div>

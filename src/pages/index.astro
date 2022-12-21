@@ -4,12 +4,14 @@ import Showcase from "../components/Showcase.astro";
 import Features from "../components/Features.astro";
 import Tabs from "../components/Tabs.astro";
 import Card from "../components/Card.astro";
+import CardNew from "../components/CardNew.astro";
+import PillCard from "../components/PillCard.astro";
 ---
 
-<Layout title="👋 Hello Interns">
+<Layout title="Hello Interns">
   <Showcase showExtra={true} />
   <!-- <Features /> -->
-  <section class="page-content">
+  <section class="">
     <div class="container">
       <!-- <h2>Get Started With Astro</h2>
       <p>
@@ -25,75 +27,176 @@ import Card from "../components/Card.astro";
         ]}
       /> -->
 
-      <div>
-        <h2>What is Hi Interns</h2>
-        <p>
-          Hi interns is an online platform that gives students access to the
-          right network, exposure to various careers and opportunities, and
-          ultimately accelerates their journeys into the work world.
-        </p>
-        <p>
-          Completing an internship is the most effective way to grow your
-          professional network, develop real-life industry skills and enhance
-          your chances of employment
-        </p>
-        <a class="btnn py-2 px-4 rounded" href="/blog"> Get Started!</a>
+      <div class="flex items-center container h-screen">
+        <h2 class="font-['Poppins'] font-semibold text-8xl basis-1/2 relative">
+          What is <br />
+          <p class="font-['Poppins'] text-6xl mt-5">Hi Interns</p>
+          <div
+            class="font-['Poppins'] text-[250px] question-mark rotate-[26deg] absolute top-16 left-[17rem]"
+          >
+            ?
+          </div>
+        </h2>
+
+        <div class="basis-1/2 flex flex-col">
+          <p class="font-['Poppins'] font-medium text-xl">
+            Hi interns is an online platform that gives students access to the
+            right network, exposure to various careers and opportunities, and
+            ultimately accelerates their journeys into the work world.
+            <br />
+            <br />
+            <br />
+            Completing an internship is the most effective way to grow your professional
+            network, develop real-life industry skills and enhance your chances of
+            employment
+          </p>
+
+          <div class="justify-end flex">
+            <a
+              class="btnn py-2 px-4 rounded-md inline-block"
+              href="/internships"
+            >
+              Get Started!</a
+            >
+          </div>
+        </div>
       </div>
-      <div>
-        <h3>Why internships?</h3>
-        <Card>
-          <h4>Networking</h4>
-          <p>
-            You can create a professional network through colleagus, clients and
-            vendors you work with. These connections can be helpful when
-            searching for a job! vendors
-          </p>
-        </Card>
-        <Card>
-          <h4>Skill development</h4>
-          <p>
-            Advance your skill set, develop new ones and test what you have
-            already learned. The skills you gain through an internship can help
-            you in the rest of your school studies and in future jobs.
-          </p>
-        </Card>
-        <Card>
-          <h4>Experience</h4>
-          <p>
-            Internships provide industru and real-world expericence outside of
-            the classroom and eases the transition from college to the
-            professional world!
-          </p>
-        </Card>
-        <Card>
-          <h4>Exploration</h4>
-          <p>
-            Gain exposure to your field of interest and confirm career goals,
-            choices or discover new ones you weren't aware of through an
-            internship!
-          </p>
-        </Card>
+      <div class="container h-screen flex flex-col justify-center items-center">
+        <h2
+          class="font-['Poppins'] font-bold text-6xl m-10 ml-0 justify-self-start self-start"
+        >
+          Why internships?
+        </h2>
+        <div class="h-full flex justify-center items-center">
+          <div class="grid grid-cols-7 gap-4">
+            <!-- <div
+            class="col-start-1 col-span-4 border-solid border-2 border-red-500 h-24"
+          >
+          </div>
+          <div
+            class="col-start-5 col-span-4 border-solid border-2 border-red-500 h-24"
+          >
+          </div>
+          <div
+            class="col-start-2 col-span-4 border-solid border-2 border-red-500 h-24"
+          >
+          </div>
+          <div
+            class="col-start-6 col-span-4 border-solid border-2 border-red-500 h-24"
+          >
+          </div> -->
+            <CardNew
+              classAttribues="col-start-1 col-span-3"
+              title="Networking"
+              style="border"
+            >
+              <p class="text-lg">
+                You can create a professional network through colleagues,
+                clients and vendors you work with. These connections can be
+                helpful when searching for a job!
+              </p>
+            </CardNew>
+            <CardNew
+              classAttribues="col-start-4 col-span-3"
+              title="Skill development"
+              style="shadow"
+            >
+              <p class="text-lg">
+                Advance your skill set, develop new ones and test what you have
+                already learned. The skills you gain through an internship can
+                help you in the rest of your school studies and in future jobs.
+              </p>
+            </CardNew>
+            <CardNew
+              classAttribues="col-start-2 col-span-3"
+              title="Experience"
+              style="shadow"
+            >
+              <p class="text-lg">
+                Internships provide industru and real-world expericence outside
+                of the classroom and eases the transition from college to the
+                professional world!
+              </p>
+            </CardNew>
+            <CardNew
+              classAttribues="col-start-5 col-span-3"
+              title="Exploration"
+              style="border"
+            >
+              <p class="text-lg">
+                Gain exposure to your field of interest and confirm career
+                goals, choices or discover new ones you weren't aware of through
+                an internship!
+              </p>
+            </CardNew>
+          </div>
+        </div>
       </div>
-      <div>
-        <h1>Appliying for an internship has never been easier!</h1>
-        <a class="btnn py-2 px-4 rounded" href="/blog"> Get Started!</a>
-        <Card>
-          <h1>Step 1</h1>
-          <p>Click on Get Started</p>
-        </Card>
-        <Card>
-          <h1>Step 2</h1>
-          <p>Browse for opportunity</p>
-        </Card>
-        <Card>
-          <h1>Step 3</h1>
-          <p>Contact the company</p>
-        </Card>
-        <Card>
-          <h1>Step 4</h1>
-          <p>Repeat</p>
-        </Card>
+      <div class="container flex items-center justify-center h-screen">
+        <div class="grid grid-cols-2 gap-x- gap-y-0 mx-auto">
+          <div class="flex flex-col justify-center my-auto">
+            <h1 class="font-['Poppins'] font-extrabold text-6xl leading-snug">
+              Applying for an internship has never been easier!
+            </h1>
+            <div class="justify-end flex">
+              <a
+                class="btnn py-2 px-4 rounded-md inline-block mr-3"
+                href="/internships"
+              >
+                Get Started!</a
+              >
+            </div>
+          </div>
+          <div class="grid grid-cols-2 m-auto gap-8 mr-0">
+            <div class="h-fit w-fit">
+              <PillCard title="Step 1" icon="arrow_selector_tool">
+                <p class="text-xl m-4">Click on Get Started</p>
+              </PillCard>
+            </div>
+            <div class="h-fit w-fit">
+              <PillCard title="Step 2" icon="search">
+                <p class="text-xl m-4">Browse for opportunity</p>
+              </PillCard>
+            </div>
+            <div class="h-fit w-fit">
+              <PillCard title="Step 3" icon="call">
+                <p class="text-xl m-4">Contact the company</p>
+              </PillCard>
+            </div>
+            <div class="h-fit w-fit">
+              <PillCard title="Step 4" icon="replay">
+                <p class="text-xl m-4">Repeat</p>
+              </PillCard>
+            </div>
+            <!-- <PillCard title="Step 1">
+              <p class="text-xl m-4">Click on Get Started</p>
+            </PillCard>
+            <PillCard title="Step 2">
+              <p class="text-xl m-4">Browse for opportunity</p>
+            </PillCard>
+            <PillCard title="Step 3">
+              <p class="text-xl m-4">Contact the company</p>
+            </PillCard>
+            <PillCard title="Step 4">
+              <p class="text-xl m-4">Repeat</p>
+            </PillCard> -->
+          </div>
+        </div>
       </div>
     </div>
   </section>
 </Layout>
+<style>
+  .container {
+    /* max-width: 1600px;
+    margin: 0 auto; */
+  }
+  .large-text {
+    font-size: 100px !important;
+    font-weight: 600;
+  }
+  .question-mark {
+    -webkit-text-stroke: 8px #80ed99;
+    -webkit-text-fill-color: transparent;
+  }
+</style>

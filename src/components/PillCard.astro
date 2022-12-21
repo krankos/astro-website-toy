@@ -1,0 +1,32 @@
+---
+export interface Props {
+  title: string;
+  icon: string;
+}
+
+const { title, icon } = Astro.props as Props;
+---
+
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+/>
+<div
+  class="rounded-[30px] w-52 border-2 text-center border-[#80ed99] h-fit mr-0"
+>
+  <div
+    class="bg-[#80ed99] p-4 rounded-[26px] flex flex-row justify-evenly items-center"
+  >
+    <span class="material-symbols-outlined text-white"> {icon}</span>
+    <h1 class="text-white text-3xl font-extrabold">{title.toUpperCase()}</h1>
+  </div>
+
+  <div class="h-24 flex items-center justify-center">
+    <slot />
+  </div>
+</div>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 0, "opsz" 48;
+  }
+</style>

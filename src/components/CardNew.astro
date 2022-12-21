@@ -1,0 +1,45 @@
+---
+export interface Props {
+  dark?: boolean;
+  title: String;
+  style?: String;
+  classAttribues?: String;
+}
+
+const {
+  dark = false,
+  title,
+  style = "shadow",
+  classAttribues,
+} = Astro.props as Props;
+---
+
+<div
+  class={`
+  ${classAttribues ? classAttribues : ""} 
+  ${
+    style === "border"
+      ? "border-solid border-2 border-emerald-300 bg-slate-100"
+      : null
+  } ${style === "shadow" ? "shadow-xl bg-white" : null} ${
+    dark && "dark"
+  }  p-8 rounded-3xl max-w-sm m-5 w-96 `}
+>
+  <h5 class="text-gray-900 text-xl leading-tight font-bold mb-2">{title}</h5>
+  <slot />
+</div>
+
+<style>
+  /* .card {
+    background: #fff;
+    padding: 20px 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    border: 2px solid rgb(215, 26, 26);
+  } */
+  .dark {
+    background: var(--color-primary);
+    color: #fff;
+  }
+</style>

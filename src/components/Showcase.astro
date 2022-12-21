@@ -10,19 +10,21 @@ export interface Props {
 
 const {
   heading = "Start your career the right way",
-  text = "Join us and Explore Internship opportunities",
+  text = "Join us & Explore Internship opportunities",
   showExtra = false,
 } = Astro.props as Props;
 ---
 
 <section class="showcase">
   <div class="showcase-text">
-    <h1>{heading}</h1>
-    <p>
+    <h1 class="font-['Poppins'] text-7xl mb-10 font-extrabold">
+      {heading}
+    </h1>
+    <p class="font-regular text-3xl">
       {text}
     </p>
   </div>
-  <a class="btnn py-2 px-4 rounded" href="/blog"> Get Started!</a>
+  <a class="btnn py-2 px-4 rounded" href="/internships"> Get Started!</a>
   <!-- {
     showExtra && (
       <>
@@ -43,7 +45,7 @@ const {
 
 <style>
   .showcase {
-    height: auto;
+    height: 100vh;
     /* background-color: var(--color-secondary);
     background-image: linear-gradient(
       to bottom,
@@ -62,7 +64,7 @@ const {
   }
 
   .showcase-text {
-    max-width: 500px;
+    max-width: 700px;
     /* color: #fff; */
     color: var(--color-new-secondary);
     text-align: center;
@@ -70,14 +72,14 @@ const {
   }
 
   .showcase h1 {
-    font-size: 50px;
+    /* font-size: 50px; */
     /* color: #fff; */
-    margin-bottom: 20px;
-    font-weight: 900;
+    /* margin-bottom: 20px;
+    font-weight: 900; */
   }
 
   .showcase p {
-    font-size: 24px;
+    /* font-size: 24px; */
     margin-bottom: 20px;
   }
 
@@ -95,5 +97,8 @@ const {
     color: var(--color-new-secondary);
     text-align: center;
     font-weight: 300;
+  }
+  .bold {
+    font-weight: 900;
   }
 </style>

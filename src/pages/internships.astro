@@ -37,8 +37,8 @@ const strapiPosts = data.data;
 const posts = await Astro.glob("../posts/*.md");
 ---
 
-<Layout title="Astro Blog">
-  <Showcase heading="Astro Blog" text="A simple Blog built with Astro" />
+<Layout>
+  <Showcase heading="Internships" text="Our Selection" />
   <section class="page-content">
     <div class="container">
       {
@@ -67,7 +67,7 @@ const posts = await Astro.glob("../posts/*.md");
                 ) : null}
               </div>
             </div>
-            <p>{post.attributes.Excerpt}</p>
+            <p class="my-4">{post.attributes.Excerpt}</p>
             <a class="btn" href={`/${post.attributes.Slug}`}>
               Read More
             </a>
@@ -102,5 +102,8 @@ const posts = await Astro.glob("../posts/*.md");
   .flex {
     display: flex;
     justify-content: space-between;
+  }
+  p {
+    margin: 1rem 0;
   }
 </style>

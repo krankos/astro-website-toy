@@ -6,16 +6,24 @@ export interface Props {
   heading?: string;
   text?: string;
   showExtra?: boolean;
+  height?: string;
+  button?: boolean;
 }
 
 const {
   heading = "Start your career the right way",
   text = "Join us & Explore Internship opportunities",
   showExtra = false,
+  height = "tall",
+  button = true,
 } = Astro.props as Props;
 ---
 
-<section class="showcase">
+<section
+  class={`showcase ${
+    height === "tall" ? "h-screen" : height === "short" ? "h-1/2" : ""
+  }`}
+>
   <div class="showcase-text">
     <h1 class="font-['Poppins'] text-7xl mb-10 font-extrabold">
       {heading}
@@ -24,7 +32,14 @@ const {
       {text}
     </p>
   </div>
-  <a class="btnn py-2 px-4 rounded" href="/internships"> Get Started!</a>
+  {
+    button && (
+      <a class="btnn py-2 px-4 rounded" href="/internships">
+        {" "}
+        Get Started!
+      </a>
+    )
+  }
   <!-- {
     showExtra && (
       <>
@@ -45,7 +60,6 @@ const {
 
 <style>
   .showcase {
-    height: 100vh;
     /* background-color: var(--color-secondary);
     background-image: linear-gradient(
       to bottom,

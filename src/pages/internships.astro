@@ -38,43 +38,147 @@ const posts = await Astro.glob("../posts/*.md");
 ---
 
 <Layout>
-  <Showcase heading="Internships" text="Our Selection" />
+  <Showcase
+    heading="Internships"
+    text="Our Selection"
+    height="short"
+    button={false}
+  />
   <section class="page-content">
-    <div class="container">
-      {
-        strapiPosts.map((post) => (
-          <Card>
-            <div class="card-header">
-              <div class="flex">
-                <h3>{post.attributes.Title}</h3>
+    <!-- component -->
 
-                {post.attributes.Type ? (
-                  <p>
-                    <b>Type:</b> {post.attributes.Type}
-                  </p>
-                ) : null}
-              </div>
-              <div class="flex">
-                {post.attributes.Location ? (
-                  <p>
-                    <b>Location:</b> {post.attributes.Location}
-                  </p>
-                ) : null}
-                {post.attributes.Duration ? (
-                  <p>
-                    <b>Duration:</b> {post.attributes.Duration.slice(1)}
-                  </p>
-                ) : null}
-              </div>
+    <div class="container">
+      <div class="flex">
+        <div class="text-gray-600 w-auto m-5 block">
+          <!-- Label -->
+          <!-- <label for="keywords" class="text-sm font-medium text-gray-700"
+            >Keywords</label
+          > -->
+          <input
+            id="keywords"
+            type="search"
+            name="search"
+            placeholder="Keywords"
+            class="bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none"
+          />
+          <button type="submit" class="relative right-10 top-1 mt-3 mr-4">
+            <svg
+              class="h-4 w-4 fill-current"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              version="1.1"
+              id="Capa_1"
+              x="0px"
+              y="0px"
+              viewBox="0 0 56.966 56.966"
+              style="enable-background:new 0 0 56.966 56.966;"
+              xml:space="preserve"
+              width="512px"
+              height="512px"
+            >
+              <path
+                d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <div class="text-gray-600 w-auto m-5">
+          <input
+            id="location"
+            type="search"
+            name="location"
+            placeholder="Location"
+            class="bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none"
+          />
+          <button type="submit" class="relative right-10 top-1 mt-3 mr-4">
+            <svg
+              class="h-4 w-4 fill-current"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              version="1.1"
+              id="Capa_1"
+              x="0px"
+              y="0px"
+              viewBox="0 0 56.966 56.966"
+              style="enable-background:new 0 0 56.966 56.966;"
+              xml:space="preserve"
+              width="512px"
+              height="512px"
+            >
+              <path
+                d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <div>
+          <b>Duration:</b>
+          <div class="relative inline-block text-gray-600 w-auto m-5">
+            <select
+              class="bg-white h-10 px-5 pr-8 rounded-full text-sm focus:outline-none appearance-none duraction-option"
+            >
+              <option selected="selected" value="">All</option>
+              <option value="1-3 months">1-3 Months</option>
+              <option value="3-6 months">3-6 Months</option>
+            </select>
+            <div
+              class="pointer-events-none absolute top-0 mt-3 right-0 flex items-center px-2 text-gray-600"
+            >
+              <svg
+                class="fill-current h-4 w-4"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M10 12a2 2 0 100-4 2 2 0 000 4zm0 2a4 4 0 100-8 4 4 0 000 8z"
+                ></path>
+              </svg>
             </div>
-            <p class="my-4">{post.attributes.Excerpt}</p>
-            <a class="btn" href={`/${post.attributes.Slug}`}>
-              Read More
-            </a>
-          </Card>
-        ))
-      }
-      {
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <!-- Make a dropdown for duration with 3 options : All, 1-3 Months and 3-6 Months -->
+
+        {
+          strapiPosts.map((post) => (
+            <Card>
+              <div class="card-header">
+                <div class="flex">
+                  <h3 class="title">{post.attributes.Title}</h3>
+
+                  {post.attributes.Type ? (
+                    <p class="type">
+                      <b>Type:</b> {post.attributes.Type}
+                    </p>
+                  ) : null}
+                </div>
+                <div class="flex">
+                  {post.attributes.Location ? (
+                    <p>
+                      <b>Location:</b>{" "}
+                      {<span class="location">{post.attributes.Location}</span>}
+                    </p>
+                  ) : null}
+                  {post.attributes.Duration ? (
+                    <p>
+                      <b>Duration:</b>{" "}
+                      <span class="duration">
+                        {post.attributes.Duration.slice(1)}
+                      </span>
+                    </p>
+                  ) : null}
+                </div>
+              </div>
+              <p class="my-4 excerpt">{post.attributes.Excerpt}</p>
+              <a class="btn" href={`/${post.attributes.Slug}`}>
+                Read More
+              </a>
+            </Card>
+          ))
+        }
+        <!-- {
         posts.map((post) => (
           <Card>
             <h3>{post.frontmatter.title}</h3>
@@ -88,7 +192,8 @@ const posts = await Astro.glob("../posts/*.md");
             </a>
           </Card>
         ))
-      }
+      } -->
+      </div>
     </div>
   </section>
 </Layout>
@@ -107,3 +212,343 @@ const posts = await Astro.glob("../posts/*.md");
     margin: 1rem 0;
   }
 </style>
+
+<script lang="javascript">
+  let input = document.getElementById("keywords");
+  let internships = document.querySelectorAll(".internship");
+
+  let locationInput = document.getElementById("location");
+  let durationOption = document.querySelector(".duraction-option");
+
+  let updateList = () => {
+    //check the inputs and filter the internships accordingly
+    internships.forEach((internship) => {
+      // if (
+      //   (internship
+      //     .querySelector(".title")
+      //     .innerHTML.toLowerCase()
+      //     .includes(input.value.toLowerCase()) ||
+      //     internship
+      //       .querySelector(".excerpt")
+      //       .innerHTML.toLowerCase()
+      //       .includes(input.value.toLowerCase())) &&
+      //   internship.querySelector().includes(locationInput.value.toLowerCase) &&
+      //   internship
+      //     .querySelector(".duration")
+      //     .includes(durationOption.value.toLowerCase())
+      // ) {
+      //   internship.classList.remove("hidden");
+      // } else {
+      //   internship.classList.add("hidden");
+      // }
+    });
+  };
+
+  // input.addEventListener("input", updateList);
+  // locationInput.addEventListener("input", updateList);
+  // durationOption.addEventListener("change", updateList);
+
+  // console.log(internships[0].querySelector(".excerpt").innerHTML.toLowerCase());
+  // when the input changes add "hidden" class to internships that don't match the search
+  // input.addEventListener("input", (e) => {
+  //   internships.forEach((internship) => {
+  //     if (
+  //       internship
+  //         .querySelector(".title")
+  //         .innerHTML.toLowerCase()
+  //         .includes(e.target.value.toLowerCase()) ||
+  //       internship
+  //         .querySelector(".excerpt")
+  //         .innerHTML.toLowerCase()
+  //         .includes(e.target.value.toLowerCase())
+  //     ) {
+  //       internship.classList.remove("hidden");
+  //     } else {
+  //       internship.classList.add("hidden");
+  //     }
+  //   });
+  // });
+  // // do the same for location
+  // locationInput.addEventListener("input", (e) => {
+  //   console.log(e.target.value);
+  //   internships.forEach((internship) => {
+  //     if (
+  //       internship
+  //         .querySelector(".location")
+  //         .innerHTML.toLowerCase()
+  //         .includes(e.target.value.toLowerCase())
+  //     ) {
+  //       console.log("match");
+  //       internship.classList.remove("hidden");
+  //     } else {
+  //       internship.classList.add("hidden");
+  //     }
+  //   });
+  // });
+
+  // durationOption.addEventListener("change", (e) => {
+  //   if (e.target.value === "All") {
+  //     internships.forEach((internship) => {
+  //       internship.classList.remove("hidden");
+  //     });
+  //   } else {
+  //     internships.forEach((internship) => {
+  //       if (
+  //         internship
+  //           .querySelector(".duration")
+  //           .innerHTML.toLowerCase()
+  //           .includes(e.target.value.toLowerCase())
+  //       ) {
+  //         internship.classList.remove("hidden");
+  //       } else {
+  //         internship.classList.add("hidden");
+  //       }
+  //     });
+  //   }
+  // });
+  input.addEventListener("input", (e) => {
+    if (locationInput === "" && durationOption === "") {
+      internships.forEach((internship) => {
+        if (
+          internship
+            .querySelector(".title")
+            .innerHTML.toLowerCase()
+            .includes(e.target.value.toLowerCase()) ||
+          internship
+            .querySelector(".excerpt")
+            .innerHTML.toLowerCase()
+            .includes(e.target.value.toLowerCase())
+        ) {
+          internship.classList.remove("hidden");
+        } else {
+          internship.classList.add("hidden");
+        }
+      });
+    } else if (locationInput !== "" && durationOption === "") {
+      internships.forEach((internship) => {
+        if (
+          (internship
+            .querySelector(".title")
+            .innerHTML.toLowerCase()
+            .includes(e.target.value.toLowerCase()) ||
+            internship
+              .querySelector(".excerpt")
+              .innerHTML.toLowerCase()
+              .includes(e.target.value.toLowerCase())) &&
+          internship
+            .querySelector(".location")
+            .innerHTML.toLowerCase()
+            .includes(locationInput.value.toLowerCase())
+        ) {
+          internship.classList.remove("hidden");
+        } else {
+          internship.classList.add("hidden");
+        }
+      });
+    } else if (locationInput === "" && durationOption !== "") {
+      internships.forEach((internship) => {
+        if (
+          (internship
+            .querySelector(".title")
+            .innerHTML.toLowerCase()
+            .includes(e.target.value.toLowerCase()) ||
+            internship
+              .querySelector(".excerpt")
+              .innerHTML.toLowerCase()
+              .includes(e.target.value.toLowerCase())) &&
+          internship
+            .querySelector(".duration")
+            .innerHTML.toLowerCase()
+            .includes(durationOption.value.toLowerCase())
+        ) {
+          internship.classList.remove("hidden");
+        } else {
+          internship.classList.add("hidden");
+        }
+      });
+    } else if (locationInput !== "" && durationOption !== "") {
+      internships.forEach((internship) => {
+        if (
+          (internship
+            .querySelector(".title")
+            .innerHTML.toLowerCase()
+            .includes(e.target.value.toLowerCase()) ||
+            internship
+              .querySelector(".excerpt")
+              .innerHTML.toLowerCase()
+              .includes(e.target.value.toLowerCase())) &&
+          internship
+            .querySelector(".location")
+            .innerHTML.toLowerCase()
+            .includes(locationInput.value.toLowerCase()) &&
+          internship
+            .querySelector(".duration")
+            .innerHTML.toLowerCase()
+            .includes(durationOption.value.toLowerCase())
+        ) {
+          internship.classList.remove("hidden");
+        } else {
+          internship.classList.add("hidden");
+        }
+      });
+    }
+  });
+  locationInput.addEventListener("input", (e) => {
+    if (input === "" && durationOption === "") {
+      internships.forEach((internship) => {
+        if (
+          internship
+            .querySelector(".location")
+            .innerHTML.toLowerCase()
+            .includes(e.target.value.toLowerCase())
+        ) {
+          internship.classList.remove("hidden");
+        } else {
+          internship.classList.add("hidden");
+        }
+      });
+    } else if (input !== "" && durationOption === "") {
+      internships.forEach((internship) => {
+        if (
+          internship
+            .querySelector(".location")
+            .innerHTML.toLowerCase()
+            .includes(e.target.value.toLowerCase()) &&
+          (internship
+            .querySelector(".title")
+            .innerHTML.toLowerCase()
+            .includes(input.value.toLowerCase()) ||
+            internship
+              .querySelector(".excerpt")
+              .innerHTML.toLowerCase()
+              .includes(input.value.toLowerCase()))
+        ) {
+          internship.classList.remove("hidden");
+        } else {
+          internship.classList.add("hidden");
+        }
+      });
+    } else if (input === "" && durationOption !== "") {
+      internships.forEach((internship) => {
+        if (
+          internship
+            .querySelector(".location")
+            .innerHTML.toLowerCase()
+            .includes(e.target.value.toLowerCase()) &&
+          internship
+            .querySelector(".duration")
+            .innerHTML.toLowerCase()
+            .includes(durationOption.value.toLowerCase())
+        ) {
+          internship.classList.remove("hidden");
+        } else {
+          internship.classList.add("hidden");
+        }
+      });
+    } else if (input !== "" && durationOption !== "") {
+      internships.forEach((internship) => {
+        if (
+          internship
+            .querySelector(".location")
+            .innerHTML.toLowerCase()
+            .includes(e.target.value.toLowerCase()) &&
+          internship
+            .querySelector(".duration")
+            .innerHTML.toLowerCase()
+            .includes(durationOption.value.toLowerCase()) &&
+          (internship
+            .querySelector(".title")
+            .innerHTML.toLowerCase()
+            .includes(input.value.toLowerCase()) ||
+            internship
+              .querySelector(".excerpt")
+              .innerHTML.toLowerCase()
+              .includes(input.value.toLowerCase()))
+        ) {
+          internship.classList.remove("hidden");
+        } else {
+          internship.classList.add("hidden");
+        }
+      });
+    }
+  });
+  durationOption.addEventListener("change", (e) => {
+    if (input === "" && locationInput === "") {
+      internships.forEach((internship) => {
+        if (
+          internship
+            .querySelector(".duration")
+            .innerHTML.toLowerCase()
+            .includes(e.target.value.toLowerCase())
+        ) {
+          internship.classList.remove("hidden");
+        } else {
+          internship.classList.add("hidden");
+        }
+      });
+    } else if (input !== "" && locationInput === "") {
+      internships.forEach((internship) => {
+        if (
+          internship
+            .querySelector(".duration")
+            .innerHTML.toLowerCase()
+            .includes(e.target.value.toLowerCase()) &&
+          (internship
+            .querySelector(".title")
+            .innerHTML.toLowerCase()
+            .includes(input.value.toLowerCase()) ||
+            internship
+              .querySelector(".excerpt")
+              .innerHTML.toLowerCase()
+              .includes(input.value.toLowerCase()))
+        ) {
+          internship.classList.remove("hidden");
+        } else {
+          internship.classList.add("hidden");
+        }
+      });
+    } else if (input === "" && locationInput !== "") {
+      internships.forEach((internship) => {
+        if (
+          internship
+            .querySelector(".duration")
+            .innerHTML.toLowerCase()
+            .includes(e.target.value.toLowerCase()) &&
+          internship
+            .querySelector(".location")
+            .innerHTML.toLowerCase()
+            .includes(locationInput.value.toLowerCase())
+        ) {
+          internship.classList.remove("hidden");
+        } else {
+          internship.classList.add("hidden");
+        }
+      });
+    } else if (input !== "" && locationInput !== "") {
+      internships.forEach((internship) => {
+        if (
+          internship
+            .querySelector(".duration")
+            .innerHTML.toLowerCase()
+            .includes(e.target.value.toLowerCase()) &&
+          internship
+            .querySelector(".location")
+            .innerHTML.toLowerCase()
+            .includes(locationInput.value.toLowerCase()) &&
+          (internship
+            .querySelector(".title")
+            .innerHTML.toLowerCase()
+            .includes(input.value.toLowerCase()) ||
+            internship
+              .querySelector(".excerpt")
+              .innerHTML.toLowerCase()
+              .includes(input.value.toLowerCase()))
+        ) {
+          internship.classList.remove("hidden");
+        } else {
+          internship.classList.add("hidden");
+        }
+      });
+    }
+  });
+</script>
